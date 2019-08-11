@@ -1,0 +1,7 @@
+Bot:
+  Enable: true
+  Debug: false
+  Discord:
+    Token: ''
+    ChatChannelName: ''
+    ConsoleChannelName: ''

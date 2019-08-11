@@ -1,4 +1,9 @@
 name: AsukaDiscord
-version: 0.1-SNAPSHOT
+version: 0.0.1-SNAPSHOT
 author: Clooooode
-main: at.meowww.asuka_discord.AsukaDiscord
+main: at.meowww.AsukaDiscord.AsukaDiscord
+commands:
+  asuka:
+    description: Asuka meow meow meow~
+    usage: |
+      /asuka bot ...
