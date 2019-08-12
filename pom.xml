@@ -23,6 +23,12 @@
             <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <!-- AsukaMeow -->
+        <dependency>
+            <groupId>com.github.AsukaMeow</groupId>
+            <artifactId>AsukaMeow</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!-- jda -->
         <dependency>
             <groupId>net.dv8tion</groupId>
@@ -38,6 +44,10 @@
     </dependencies>
 
     <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
         <repository>
             <id>jcenter</id>
             <url>http://jcenter.bintray.com</url>
@@ -82,7 +92,7 @@
                 </executions>
                 <configuration>
                     <file>${basedir}/src/main/resources/plugin.yml</file>
-                    <outputFile>${basedir}/src/main/resources/plugin.yml</outputFile>
+                    <outputFile>${basedir}/out/plugin.yml</outputFile>
                     <regex>false</regex>
                     <replacements>
                         <replacement>

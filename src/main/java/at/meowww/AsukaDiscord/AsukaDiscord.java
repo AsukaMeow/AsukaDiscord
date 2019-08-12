@@ -1,7 +1,6 @@
 package at.meowww.AsukaDiscord;
 
 import at.meowww.AsukaDiscord.utils.Command;
-import at.meowww.AsukaDiscord.utils.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;

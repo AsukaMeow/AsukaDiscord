@@ -1,7 +1,7 @@
 package at.meowww.AsukaDiscord;
 
 import at.meowww.AsukaDiscord.invoke.Filter;
-import at.meowww.AsukaDiscord.utils.Listener;
+import at.meowww.AsukaMeow.util.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -16,6 +16,7 @@ public class BotListener extends Listener {
     private boolean consoleEnable = false;
 
     public BotListener (BotHandler handler) {
+        super(handler);
         this.handler = handler;
     }
 

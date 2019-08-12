@@ -1,7 +1,8 @@
-name: AsukaDiscord
-version: 0.0.1-SNAPSHOT
-author: Clooooode
-main: at.meowww.AsukaDiscord.AsukaDiscord
+name: {NAME}
+version: {VERSION}
+author: {AUTHOR}
+main: {MAIN}
+depend: [ AsukaMeow ]
 commands:
   asuka:
     description: Asuka meow meow meow~

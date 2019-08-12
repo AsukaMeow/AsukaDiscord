@@ -28,11 +28,11 @@ public class BotCommand {
         if (strings.length > 0) {
             BotHandler handler = AsukaDiscord.botHandler;
             if (strings[0].equalsIgnoreCase("status") || strings[0].equalsIgnoreCase("s")) {
-                commandSender.sendMessage(String.valueOf(handler.enable));
+                commandSender.sendMessage(String.valueOf(handler.getEnable()));
             } else if (strings[0].equalsIgnoreCase("toggle") || strings[0].equalsIgnoreCase("t")) {
-                handler.enable = !handler.enable;
-                handler.toggleRegister();
-                commandSender.sendMessage("Enable change to " + String.valueOf(handler.enable));
+                handler.flipEnable();
+                handler.toggleRegister(AsukaDiscord.INSTANCE);
+                commandSender.sendMessage("Enable change to " + String.valueOf(handler.getEnable()));
             }
         } else {
             String msg = "";
