@@ -1,16 +1,14 @@
 package at.meowww.AsukaDiscord;
 
-import at.meowww.AsukaDiscord.log.LogHandler;
+import at.meowww.AsukaDiscord.log4j.ConsoleAppender;
 import at.meowww.AsukaMeow.util.Handler;
 import org.bukkit.configuration.MemoryConfiguration;
 import org.bukkit.configuration.MemorySection;
 
-import java.util.logging.Level;
-
 public class BotHandler extends Handler {
 
 
-    protected LogHandler logHandler;
+    protected final ConsoleAppender consoleAppender = new ConsoleAppender();
     protected BotListener listener;
 
     public boolean debug;
@@ -55,9 +53,7 @@ public class BotHandler extends Handler {
         if (this.enable) {
             this.bot.connect();
             if (!this.chatChannelName.equals("")) {
-                logHandler = new LogHandler(this, this.bot);
-                AsukaDiscord.logger.setLevel(Level.ALL);
-                AsukaDiscord.logger.addHandler(logHandler);
+                consoleAppender.start();
             }
         }
     }

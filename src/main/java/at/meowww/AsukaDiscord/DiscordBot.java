@@ -1,7 +1,7 @@
 package at.meowww.AsukaDiscord;
 
 import at.meowww.AsukaDiscord.command.Command;
-import at.meowww.AsukaDiscord.command.InvokeSender;
+import com.google.common.base.Splitter;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -39,7 +39,14 @@ public class DiscordBot extends ListenerAdapter {
 
     public void sendMessage(String channelName, String message) {
         try {
-            this.getTextChannelByName(channelName).sendMessage(message.replaceAll("§.", "")).queue();
+            String msg = message.replaceAll("§.", "");
+            if (msg.length() > 2000) {
+                for (final String slice : Splitter.fixedLength(2000).split(msg)) {
+                    this.getTextChannelByName(channelName).sendMessage(slice).queue();
+                }
+            } else {
+                this.getTextChannelByName(channelName).sendMessage(msg).queue();
+            }
         } catch (Exception e) {
             if (this.handler.debug) {
                 e.printStackTrace();
@@ -57,9 +64,7 @@ public class DiscordBot extends ListenerAdapter {
                     Bukkit.broadcastMessage(
                             String.format("[Discord] %s : %s", event.getAuthor().getName(), event.getMessage()));
                 } else if (event.getChannel().getName().equals(this.handler.consoleChannelName)) {
-                    Bukkit.getScheduler().callSyncMethod(AsukaDiscord.INSTANCE, () ->
-                            Bukkit.dispatchCommand(new InvokeSender(this.handler, Bukkit.getConsoleSender()), event.getMessage().getContentDisplay())
-                    );
+                    Bukkit.getScheduler().runTask(AsukaDiscord.INSTANCE, () -> Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), event.getMessage().getContentRaw()));
                 }
             }
         } catch (Exception e) {
